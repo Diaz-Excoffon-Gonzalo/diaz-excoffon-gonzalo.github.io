@@ -39,26 +39,37 @@ body {
     text-align: center;
     padding: 2rem 1.5rem;
     min-height: 150px;
+
+    /* Quitar subrayado del enlace */
     text-decoration: none;
+    color: inherit; /* Mantiene el color del texto */
 
     /* Fondo blanco translúcido (Efecto vidrio) */
     background: rgba(255, 255, 255, 0.4);
-    
+
     /* Borde dorado muy fino y elegante */
     border: 1px solid rgba(212, 175, 55, 0.5);
     border-radius: 12px;
-    
-    /* Sombra exterior: Mezcla de azul muy suave y marrón para dar profundidad sin oscurecer */
-    box-shadow: 0 8px 32px rgba(26, 54, 93, 0.08), 
+
+    /* Sombra exterior */
+    box-shadow: 0 8px 32px rgba(26, 54, 93, 0.08),
                 0 4px 8px rgba(92, 64, 51, 0.05);
-    
-    /* El filtro que desenfoca lo que hay detrás del vidrio */
+
+    /* Efecto vidrio */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
+
     transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
 }
 
+/* Quitar subrayado en todos los estados del enlace */
+.card:link,
+.card:visited,
+.card:hover,
+.card:active {
+    text-decoration: none;
+    color: inherit;
+}
 /* Efecto al pasar el mouse: Se ilumina en dorado y la sombra marrón toma presencia */
 .card:hover {
     transform: translateY(-5px);
