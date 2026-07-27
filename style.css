@@ -48,7 +48,7 @@ body {
 }
 
 .neon-text {
-    font-size: 2.2rem; /* Letra más chica para que entren los 3 en fila */
+    font-size: 2.2rem; 
     color: #fff;
     text-shadow:
         0 0 5px #fff,
@@ -56,7 +56,7 @@ body {
         0 0 20px #FC8FE0,
         0 0 40px #FC8FE0,
         0 0 60px #FC8FE0;
-    margin-bottom: 0.8rem;
+    margin: 0; /* Cambiamos a 0 para que no descompense el eje Y */
     text-transform: uppercase;
     letter-spacing: 2px;
 }
