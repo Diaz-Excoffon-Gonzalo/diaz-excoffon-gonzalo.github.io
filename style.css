@@ -1,4 +1,4 @@
-/* Reseteo básico de márgenes */
+/* Reseteo básico */
 * {
     margin: 0;
     padding: 0;
@@ -6,43 +6,72 @@
 }
 
 body {
-    background-color: #2B154B; /* Fondo oscuro */
+    background-color: #2B154B;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* min-height en vez de height para que no se corte si la pantalla es chica */
+    padding: 2rem;
     color: white;
 }
 
-.container {
+/* El contenedor que arma la matriz de 3x2 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas del mismo tamaño */
+    gap: 2rem; /* Espacio entre los carteles */
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* El estilo de cada cartel individual */
+.card {
     text-align: center;
-    padding: 3rem 4rem;
+    padding: 2rem 1.5rem;
     background: rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0 8px 32px rgba(252, 143, 224, 0.15);
     border: 1px solid rgba(252, 143, 224, 0.3);
-    backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease; /* Prepara la animación para el mouse */
+}
+
+/* Efecto hover: sube un poco el cartel al pasar el cursor */
+.card:hover {
+    transform: translateY(-8px);
 }
 
 .neon-text {
-    font-size: 4rem;
+    font-size: 2.2rem; /* Letra más chica para que entren los 3 en fila */
     color: #fff;
-    /* Efecto de texto brillante */
     text-shadow:
         0 0 5px #fff,
         0 0 10px #fff,
         0 0 20px #FC8FE0,
         0 0 40px #FC8FE0,
-        0 0 80px #FC8FE0;
-    margin-bottom: 1rem;
+        0 0 60px #FC8FE0;
+    margin-bottom: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
 }
 
 p {
-    font-size: 1.2rem;
-    color: #00ffff; /* Acento cian */
-    letter-spacing: 1.5px;
+    font-size: 1rem;
+    color: #00ffff;
+    letter-spacing: 1px;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+}
+
+/* DISEÑO RESPONSIVO: Si la pantalla se achica (ej. celular o tablet), cambia la matriz */
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Pasa a 2 columnas */
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Pasa a 1 columna en celulares */
+    }
 }
