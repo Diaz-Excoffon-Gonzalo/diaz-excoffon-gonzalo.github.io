@@ -314,7 +314,7 @@ body {
 
 .under-construction-img {
     position: absolute; /* Permite que la imagen flote libremente dentro de la tarjeta */
-    width: 250%;        /* <-- Cambiado a ojimetro */
+    width: 175%;        /* <-- Cambiado a ojimetro */
     height: auto;
     
     /* Centrado absoluto */
