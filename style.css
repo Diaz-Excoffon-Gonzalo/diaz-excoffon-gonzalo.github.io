@@ -27,6 +27,11 @@ body {
 
 /* El estilo de cada cartel individual */
 .card {
+    display: flex;             /* Activa Flexbox */
+    flex-direction: column;    /* Apila los elementos verticalmente */
+    justify-content: center;   /* Centra en el eje Y (vertical) */
+    align-items: center;       /* Centra en el eje X (horizontal) */
+    
     text-align: center;
     padding: 2rem 1.5rem;
     background: rgba(0, 0, 0, 0.3);
@@ -34,7 +39,7 @@ body {
     box-shadow: 0 8px 32px rgba(252, 143, 224, 0.15);
     border: 1px solid rgba(252, 143, 224, 0.3);
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease; /* Prepara la animación para el mouse */
+    transition: transform 0.3s ease; 
 }
 
 /* Efecto hover: sube un poco el cartel al pasar el cursor */
