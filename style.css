@@ -1,13 +1,14 @@
-/* --- SOLO REEMPLAZÁ ESTO EN TU style.css --- */
+/* Esto arma la matriz de 3 columnas */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
 
-/* El estilo de cada cartel individual */
+/* Esto le da el diseño de "caja" a cada cartel */
 .card {
-    /* --- AQUÍ ESTÁ LA SOLUCIÓN: FLEXBOX --- */
-    display: flex;            /* Convierte la caja en un contenedor flexible */
-    justify-content: center;   /* Centra horizontalmente (Eje X) */
-    align-items: center;       /* Centra verticalmente (Eje Y) */
-    
-    /* Mantenemos tus otros estilos de diseño */
     text-align: center;
     padding: 2rem 1.5rem;
     background: rgba(0, 0, 0, 0.3);
@@ -15,29 +16,4 @@
     box-shadow: 0 8px 32px rgba(252, 143, 224, 0.15);
     border: 1px solid rgba(252, 143, 224, 0.3);
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
-    
-    /* Le damos una altura mínima para asegurar el centrado vertical */
-    min-height: 150px; 
-}
-
-/* Efecto hover */
-.card:hover {
-    transform: translateY(-8px);
-}
-
-.neon-text {
-    /* Ajustamos el tamaño para textos largos si es necesario */
-    font-size: 2rem; 
-    color: #fff;
-    text-shadow:
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 20px #FC8FE0,
-        0 0 40px #FC8FE0,
-        0 0 60px #FC8FE0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    /* --- IMPORTANTE: Eliminamos márgenes predeterminados --- */
-    margin: 0; 
 }
