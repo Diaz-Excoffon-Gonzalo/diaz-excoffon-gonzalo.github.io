@@ -6,77 +6,88 @@
 }
 
 body {
-    background-color: #2B154B;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fondo predominantemente blanco con un levísimo gradiente hacia un tono perlado/crema */
+    background: linear-gradient(135deg, #FFFFFF 0%, #F2EFE9 100%);
+    
+    /* Tipografía clásica y formal (Serif) típica de documentos elegantes */
+    font-family: 'Georgia', 'Times New Roman', serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* min-height en vez de height para que no se corte si la pantalla es chica */
+    min-height: 100vh;
     padding: 2rem;
-    color: white;
+    
+    /* El color base del texto ahora es un azul marino oscuro y formal */
+    color: #1A365D; 
 }
 
 /* El contenedor que arma la matriz de 3x2 */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas del mismo tamaño */
-    gap: 2rem; /* Espacio entre los carteles */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     max-width: 1200px;
     width: 100%;
 }
 
-/* El estilo de cada cartel individual */
+/* Las cajas de CRISTAL (Glassmorphism) */
 .card {
-    display: flex;             /* Activa Flexbox */
-    flex-direction: column;    /* Apila los elementos verticalmente */
-    justify-content: center;   /* Centra en el eje Y (vertical) */
-    align-items: center;       /* Centra en el eje X (horizontal) */
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 2rem 1.5rem;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(252, 143, 224, 0.15);
-    border: 1px solid rgba(252, 143, 224, 0.3);
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease; 
+    min-height: 150px;
+    
+    /* Fondo blanco translúcido (Efecto vidrio) */
+    background: rgba(255, 255, 255, 0.4);
+    
+    /* Borde dorado muy fino y elegante */
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 12px;
+    
+    /* Sombra exterior: Mezcla de azul muy suave y marrón para dar profundidad sin oscurecer */
+    box-shadow: 0 8px 32px rgba(26, 54, 93, 0.08), 
+                0 4px 8px rgba(92, 64, 51, 0.05);
+    
+    /* El filtro que desenfoca lo que hay detrás del vidrio */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
 }
 
-/* Efecto hover: sube un poco el cartel al pasar el cursor */
+/* Efecto al pasar el mouse: Se ilumina en dorado y la sombra marrón toma presencia */
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
+    border: 1px solid rgba(212, 175, 55, 0.9);
+    box-shadow: 0 12px 40px rgba(92, 64, 51, 0.15), 
+                0 4px 15px rgba(212, 175, 55, 0.2);
 }
 
-.neon-text {
-    font-size: 2.2rem; 
-    color: #fff;
-    text-shadow:
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 20px #FC8FE0,
-        0 0 40px #FC8FE0,
-        0 0 60px #FC8FE0;
-    margin: 0; /* Cambiamos a 0 para que no descompense el eje Y */
+/* El texto de los carteles */
+.elegant-text {
+    font-size: 1.8rem;
+    color: #1A365D; /* Azul real */
+    margin: 0;
     text-transform: uppercase;
     letter-spacing: 2px;
+    
+    /* Un biselado sutil usando sombras blancas y doradas para que resalte sobre el cristal */
+    text-shadow: 1px 1px 0px #FFFFFF, 
+                 0 2px 4px rgba(212, 175, 55, 0.3);
 }
 
-p {
-    font-size: 1rem;
-    color: #00ffff;
-    letter-spacing: 1px;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
-}
-
-/* DISEÑO RESPONSIVO: Si la pantalla se achica (ej. celular o tablet), cambia la matriz */
+/* DISEÑO RESPONSIVO */
 @media (max-width: 900px) {
     .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* Pasa a 2 columnas */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (max-width: 600px) {
     .grid-container {
-        grid-template-columns: 1fr; /* Pasa a 1 columna en celulares */
+        grid-template-columns: 1fr; 
     }
 }
