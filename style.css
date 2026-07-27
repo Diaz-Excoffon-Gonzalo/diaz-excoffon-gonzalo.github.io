@@ -6,22 +6,21 @@
 }
 
 body {
-    /* Fondo predominantemente blanco con un levísimo gradiente hacia un tono perlado/crema */
-    background: linear-gradient(135deg, #FFFFFF 0%, #F2EFE9 100%);
+    /* Fondo oscuro profundo, típico de interfaces de programación y dashboards */
+    background-color: #0f1115;
+    background-image: radial-gradient(circle at top right, #1a1d24, #0f1115);
     
-    /* Tipografía clásica y formal (Serif) típica de documentos elegantes */
-    font-family: 'Georgia', 'Times New Roman', serif;
+    /* Volvemos a una fuente limpia y moderna (Sans-Serif) ideal para modo oscuro */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 2rem;
-    
-    /* El color base del texto ahora es un azul marino oscuro y formal */
-    color: #1A365D; 
+    color: #e5e7eb; /* Texto gris muy claro, menos agresivo que el blanco puro */
 }
 
-/* El contenedor que arma la matriz de 3x2 */
+/* El contenedor de la matriz */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -30,7 +29,7 @@ body {
     width: 100%;
 }
 
-/* Las cajas de CRISTAL (Glassmorphism) */
+/* Base de Glassmorphism Oscuro */
 .card {
     display: flex;
     flex-direction: column;
@@ -39,30 +38,20 @@ body {
     text-align: center;
     padding: 2rem 1.5rem;
     min-height: 150px;
-
-    /* Quitar subrayado del enlace */
-    text-decoration: none;
-    color: inherit; /* Mantiene el color del texto */
-
-    /* Fondo blanco translúcido (Efecto vidrio) */
-    background: rgba(255, 255, 255, 0.4);
-
-    /* Borde dorado muy fino y elegante */
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    border-radius: 12px;
-
-    /* Sombra exterior */
-    box-shadow: 0 8px 32px rgba(26, 54, 93, 0.08),
-                0 4px 8px rgba(92, 64, 51, 0.05);
-
-    /* Efecto vidrio */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+    
+    /* Vidrio oscuro translúcido */
+    background: rgba(30, 32, 40, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    border-radius: 16px;
+    /* Borde base sutil para darle forma al "cristal" */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-/* Quitar subrayado en todos los estados del enlace */
+/* Mantener limpio el enlace (Tu excelente aporte) */
 .card:link,
 .card:visited,
 .card:hover,
@@ -70,25 +59,80 @@ body {
     text-decoration: none;
     color: inherit;
 }
-/* Efecto al pasar el mouse: Se ilumina en dorado y la sombra marrón toma presencia */
-.card:hover {
+
+/* =========================================================================
+   MAGIA CSS: Colores individuales para cada tarjeta usando :nth-child
+   ========================================================================= */
+
+/* 1. Avance de Carrera - Azul Profesional */
+.card:nth-child(1) {
+    border-bottom: 2px solid rgba(59, 130, 246, 0.4); /* Línea de base azul */
+}
+.card:nth-child(1):hover {
     transform: translateY(-5px);
-    border: 1px solid rgba(212, 175, 55, 0.9);
-    box-shadow: 0 12px 40px rgba(92, 64, 51, 0.15), 
-                0 4px 15px rgba(212, 175, 55, 0.2);
+    border-color: rgba(59, 130, 246, 0.7);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); /* Resplandor azul */
+}
+
+/* 2. Clases - Verde Esmeralda (Éxito/Aprobación) */
+.card:nth-child(2) {
+    border-bottom: 2px solid rgba(16, 185, 129, 0.4);
+}
+.card:nth-child(2):hover {
+    transform: translateY(-5px);
+    border-color: rgba(16, 185, 129, 0.7);
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+}
+
+/* 3. Proyectos Actuales - Violeta (Creatividad/Tecnología) */
+.card:nth-child(3) {
+    border-bottom: 2px solid rgba(139, 92, 246, 0.4);
+}
+.card:nth-child(3):hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 92, 246, 0.7);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+}
+
+/* 4. Balseiro - Celeste/Cian (Precisión) */
+.card:nth-child(4) {
+    border-bottom: 2px solid rgba(6, 182, 212, 0.4);
+}
+.card:nth-child(4):hover {
+    transform: translateY(-5px);
+    border-color: rgba(6, 182, 212, 0.7);
+    box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
+}
+
+/* 5. Proyectos realizados - Dorado Oscuro/Ámbar (Logros) */
+.card:nth-child(5) {
+    border-bottom: 2px solid rgba(245, 158, 11, 0.4);
+}
+.card:nth-child(5):hover {
+    transform: translateY(-5px);
+    border-color: rgba(245, 158, 11, 0.7);
+    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
+}
+
+/* 6. Personal - Carmesí (Vitalidad) */
+.card:nth-child(6) {
+    border-bottom: 2px solid rgba(225, 29, 72, 0.4);
+}
+.card:nth-child(6):hover {
+    transform: translateY(-5px);
+    border-color: rgba(225, 29, 72, 0.7);
+    box-shadow: 0 10px 30px rgba(225, 29, 72, 0.15);
 }
 
 /* El texto de los carteles */
 .elegant-text {
-    font-size: 1.8rem;
-    color: #1A365D; /* Azul real */
+    font-size: 1.5rem;
+    font-weight: 600;
     margin: 0;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    
-    /* Un biselado sutil usando sombras blancas y doradas para que resalte sobre el cristal */
-    text-shadow: 1px 1px 0px #FFFFFF, 
-                 0 2px 4px rgba(212, 175, 55, 0.3);
+    /* Sombreado oscuro detrás del texto para que no se pierda en el vidrio */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* DISEÑO RESPONSIVO */
