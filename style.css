@@ -31,6 +31,9 @@ body {
 
 /* Base de Glassmorphism Oscuro */
 .card {
+    position: relative; /* Para poder poner el underconstruction ese*/ 
+    overflow: hidden;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -303,4 +306,23 @@ body {
     
     /* El truco de magia: invierte la luz y corrige el color de los íconos */
     filter: invert(90%) hue-rotate(180deg);
+}
+
+/* =========================================================================
+   IMAGEN DE "EN CONSTRUCCIÓN"
+   ========================================================================= */
+
+.under-construction-img {
+    position: absolute; /* Permite que la imagen flote libremente dentro de la tarjeta */
+    width: 120px;       /* Ajustá este valor según qué tan grande sea tu imagen */
+    height: auto;
+    
+    /* Centrado absoluto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    z-index: 10;          /* Asegura que tape al texto */
+    pointer-events: none; /* Evita que la imagen bloquee el clic por accidente */
+    opacity: 0.8;         /* Un poco de transparencia para no perder la elegancia */
 }
