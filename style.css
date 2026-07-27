@@ -1,10 +1,13 @@
+/* --- SOLO REEMPLAZÁ ESTO EN TU style.css --- */
+
 /* El estilo de cada cartel individual */
 .card {
-    /* Agregamos Flexbox para centrar perfectamente en X e Y */
-    display: flex;
-    justify-content: center; /* Centra en el eje X (Horizontal) */
-    align-items: center;     /* Centra en el eje Y (Vertical) */
+    /* --- AQUÍ ESTÁ LA SOLUCIÓN: FLEXBOX --- */
+    display: flex;            /* Convierte la caja en un contenedor flexible */
+    justify-content: center;   /* Centra horizontalmente (Eje X) */
+    align-items: center;       /* Centra verticalmente (Eje Y) */
     
+    /* Mantenemos tus otros estilos de diseño */
     text-align: center;
     padding: 2rem 1.5rem;
     background: rgba(0, 0, 0, 0.3);
@@ -14,16 +17,17 @@
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
     
-    /* Le damos una altura mínima para que se note bien el centrado vertical */
+    /* Le damos una altura mínima para asegurar el centrado vertical */
     min-height: 150px; 
 }
 
-/* Efecto hover: sube un poco el cartel al pasar el cursor */
+/* Efecto hover */
 .card:hover {
     transform: translateY(-8px);
 }
 
 .neon-text {
+    /* Ajustamos el tamaño para textos largos si es necesario */
     font-size: 2rem; 
     color: #fff;
     text-shadow:
@@ -34,6 +38,6 @@
         0 0 60px #FC8FE0;
     text-transform: uppercase;
     letter-spacing: 2px;
-    /* Eliminamos el margin-bottom para que quede centrado perfecto */
+    /* --- IMPORTANTE: Eliminamos márgenes predeterminados --- */
     margin: 0; 
 }
