@@ -229,3 +229,33 @@ body {
 .back-button:hover {
     color: #ffffff;
 }
+
+/* =========================================================================
+   ESTADOS DE LAS MATERIAS (1 = Verde, 2 = Amarillo, 3 = Transparente por defecto)
+   ========================================================================= */
+
+/* Estado 1: Verde (Aprobada) */
+.subject-card.status-1 {
+    background: rgba(16, 185, 129, 0.15); /* Tinte verde */
+    border-color: rgba(16, 185, 129, 0.4);
+}
+.subject-card.status-1:hover {
+    border-color: rgba(16, 185, 129, 0.8);
+    box-shadow: 0 5px 20px rgba(16, 185, 129, 0.2);
+}
+.subject-card.status-1 .subject-text {
+    color: #34d399; /* Texto verde clarito para que resalte */
+}
+
+/* Estado 2: Amarillo / Ámbar (Cursando o Regular) */
+.subject-card.status-2 {
+    background: rgba(245, 158, 11, 0.15); /* Tinte amarillo/ámbar */
+    border-color: rgba(245, 158, 11, 0.4);
+}
+.subject-card.status-2:hover {
+    border-color: rgba(245, 158, 11, 0.8);
+    box-shadow: 0 5px 20px rgba(245, 158, 11, 0.2);
+}
+.subject-card.status-2 .subject-text {
+    color: #fbbf24; /* Texto amarillo clarito */
+}
