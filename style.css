@@ -214,9 +214,9 @@ body {
     line-height: 1.3;
 }
 
-/* Botón flotante para volver */
+/* Botón flotante para volver (Ahora fijo al hacer scroll) */
 .back-button {
-    position: absolute;
+    position: fixed;     /* Esto hace que el botón se quede pegado a la pantalla */
     top: 2rem;
     left: 2rem;
     color: rgba(255, 255, 255, 0.6);
@@ -224,6 +224,7 @@ body {
     font-weight: bold;
     font-size: 1rem;
     transition: color 0.3s ease;
+    z-index: 1000;       /* Asegura que el botón siempre flote POR ENCIMA de los carteles */
 }
 
 .back-button:hover {
@@ -258,4 +259,35 @@ body {
 }
 .subject-card.status-2 .subject-text {
     color: #fbbf24; /* Texto amarillo clarito */
+}
+
+/* =========================================================================
+   LEYENDA DE ESTADOS
+   ========================================================================= */
+
+.legend-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 2rem auto; /* Lo centra horizontalmente y le da margen abajo */
+    padding: 1rem 2rem;
+    background: rgba(30, 32, 40, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #e5e7eb; /* Color blanco/gris para el guion medio */
+    width: fit-content;
+}
+
+.legend-yellow {
+    color: #fbbf24;
+    margin-right: 0.5rem;
+}
+
+.legend-green {
+    color: #34d399;
+    margin-left: 0.5rem;
 }
