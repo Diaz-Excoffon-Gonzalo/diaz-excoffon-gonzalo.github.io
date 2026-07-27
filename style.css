@@ -291,3 +291,16 @@ body {
     color: #34d399;
     margin-left: 0.5rem;
 }
+
+/* Filtro para forzar el Modo Oscuro en iframes externos */
+.drive-dark-mode {
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    display: block; /* Centra el iframe si hay espacio sobrante */
+    
+    /* El truco de magia: invierte la luz y corrige el color de los íconos */
+    filter: invert(90%) hue-rotate(180deg);
+}
