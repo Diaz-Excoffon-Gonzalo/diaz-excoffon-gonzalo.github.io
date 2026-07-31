@@ -1,0 +1,143 @@
+<!-- Contenedor del Juego (Usa el mismo estilo de tus tarjetas) -->
+<div class="card" style="width: fit-content; margin: 2rem auto; align-items: center;">
+    <h2 class="elegant-text" style="margin-bottom: 1rem; font-size: 1.2rem;">Tomate un descanso</h2>
+    
+    <!-- El lienzo donde se dibuja el juego -->
+    <canvas id="snakeGame" width="400" height="400" style="background-color: rgba(0, 0, 0, 0.3); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);"></canvas>
+    <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; margin-top: 1rem;">Usá las flechitas del teclado para jugar.</p>
+</div>
+
+<!-- Lógica del Juego en JavaScript -->
+<script>
+    const canvas = document.getElementById('snakeGame');
+    const context = canvas.getContext('2d');
+
+    // Tamaño de cada cuadradito de la grilla
+    const grid = 20;
+    let count = 0;
+
+    let snake = {
+        x: 160,
+        y: 160,
+        dx: grid, // Velocidad en X
+        dy: 0,    // Velocidad en Y
+        cells: [],
+        maxCells: 4 // Tamaño inicial
+    };
+
+    let apple = {
+        x: 320,
+        y: 320
+    };
+
+    // Función para generar números aleatorios (para ubicar la manzana)
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    // Reinicia el juego cuando perdés
+    function resetGame() {
+        snake.x = 160;
+        snake.y = 160;
+        snake.cells = [];
+        snake.maxCells = 4;
+        snake.dx = grid;
+        snake.dy = 0;
+        apple.x = getRandomInt(0, canvas.width / grid) * grid;
+        apple.y = getRandomInt(0, canvas.height / grid) * grid;
+    }
+
+    // Bucle principal del juego
+    function loop() {
+        requestAnimationFrame(loop);
+
+        // Controla la velocidad del juego (a mayor número, más lento)
+        if (++count < 6) {
+            return;
+        }
+        count = 0;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Mueve la serpiente
+        snake.x += snake.dx;
+        snake.y += snake.dy;
+
+        // TRAMPA PARA BORDES: Teletransporta de un lado al otro
+        if (snake.x < 0) {
+            snake.x = canvas.width - grid;
+        } else if (snake.x >= canvas.width) {
+            snake.x = 0;
+        }
+        
+        if (snake.y < 0) {
+            snake.y = canvas.height - grid;
+        } else if (snake.y >= canvas.height) {
+            snake.y = 0;
+        }
+
+        // Guarda dónde está la serpiente
+        snake.cells.unshift({x: snake.x, y: snake.y});
+        
+        // Saca la última celda si la serpiente es más larga de lo que debería
+        if (snake.cells.length > snake.maxCells) {
+            snake.cells.pop();
+        }
+
+        // Dibuja la manzana (Color ámbar/amarillo)
+        context.fillStyle = '#fbbf24';
+        context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+
+        // Dibuja la serpiente (Color verde)
+        context.fillStyle = '#34d399';
+        snake.cells.forEach(function(cell, index) {
+            context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+
+            // Si la serpiente se come la manzana
+            if (cell.x === apple.x && cell.y === apple.y) {
+                snake.maxCells++; // Crece
+                // Aparece una nueva manzana
+                apple.x = getRandomInt(0, canvas.width / grid) * grid;
+                apple.y = getRandomInt(0, canvas.height / grid) * grid;
+            }
+
+            // Verifica si la serpiente chocó consigo misma
+            for (let i = index + 1; i < snake.cells.length; i++) {
+                if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+                    resetGame(); // Reinicia desde cero
+                }
+            }
+        });
+    }
+
+    // Escucha el teclado para mover la serpiente
+    document.addEventListener('keydown', function(e) {
+        // Evita el comportamiento por defecto (que la página baje al apretar las flechas)
+        if([37, 38, 39, 40].indexOf(e.which) > -1) {
+            e.preventDefault();
+        }
+
+        // Flecha Izquierda
+        if (e.which === 37 && snake.dx === 0) {
+            snake.dx = -grid;
+            snake.dy = 0;
+        }
+        // Flecha Arriba
+        else if (e.which === 38 && snake.dy === 0) {
+            snake.dy = -grid;
+            snake.dx = 0;
+        }
+        // Flecha Derecha
+        else if (e.which === 39 && snake.dx === 0) {
+            snake.dx = grid;
+            snake.dy = 0;
+        }
+        // Flecha Abajo
+        else if (e.which === 40 && snake.dy === 0) {
+            snake.dy = grid;
+            snake.dx = 0;
+        }
+    });
+
+    // Arranca el juego
+    requestAnimationFrame(loop);
+</script>

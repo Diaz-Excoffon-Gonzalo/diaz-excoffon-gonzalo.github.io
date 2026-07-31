@@ -326,3 +326,17 @@ body {
     pointer-events: none; /* Evita que la imagen bloquee el clic por accidente */
     opacity: 0.8;         /* Un poco de transparencia para no perder la elegancia */
 }
+
+/* =========================================================================
+   BLOQUE OCULTO (EASTER EGG)
+   ========================================================================= */
+
+.hidden-block {
+    opacity: 0; /* Lo hace 100% invisible */
+    cursor: default; /* Mantiene la flecha normal del mouse para no levantar sospechas */
+    transition: none; /* Le sacamos la animación de flotar para que no se delate si le pasan el mouse */
+    box-shadow: none; 
+}
+
+/* Opcional: Si querés que cuando pasen el mouse la flechita cambie a la "manito" 
+   para darles una pista sutil, cambiá 'cursor: default;' por 'cursor: pointer;' */
