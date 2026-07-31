@@ -44,7 +44,7 @@
         snake.y = 160;
         snake.cells = [];
         snake.maxCells = 4;
-        snake.dx = 5;
+        snake.dx = grid;
         snake.dy = 0;
         apple.x = getRandomInt(0, canvas.width / grid) * grid;
         apple.y = getRandomInt(0, canvas.height / grid) * grid;
@@ -121,22 +121,22 @@
 
         // Flecha Izquierda
         if (e.which === 37 && snake.dx === 0) {
-            snake.dx = -5;
+            snake.dx = -grid;
             snake.dy = 0;
         }
         // Flecha Arriba
         else if (e.which === 38 && snake.dy === 0) {
-            snake.dy = -5;
+            snake.dy = -grid;
             snake.dx = 0;
         }
         // Flecha Derecha
         else if (e.which === 39 && snake.dx === 0) {
-            snake.dx = 5    ;
+            snake.dx = grid;
             snake.dy = 0;
         }
         // Flecha Abajo
         else if (e.which === 40 && snake.dy === 0) {
-            snake.dy = 5;
+            snake.dy = grid;
             snake.dx = 0;
         }
     });
