@@ -11,16 +11,24 @@
     <!-- Botón para volver al Inicio -->
     <a href="index.html" class="back-button">← Volver al Tablero Principal</a>
 
-    <!-- Menú Desplegable Flotante de Electivas -->
+    <!-- Menú Desplegable Flotante con Globos (.card) -->
     <div class="electives-dropdown">
-        <div class="electives-btn">Electivas ▼</div>
-        
-        <!-- Caja que contiene las materias -->
+    
+    <!-- El botón principal (ahora es un globo) -->
+        <div class="card electives-btn">
+            <h1 class="elegant-text" style="font-size: 1.5rem; margin: 0;">Electivas ▼</h1>
+        </div>
+    
+    <!-- Contenedor invisible para apilar las materias -->
         <div class="electives-content">
-            <!-- Materias en color verde -->
-            <div class="elective-item">Applied Mechatronics</div>
             
-            <!-- Cuando quieras agregar más, simplemente copiá la línea de arriba y pegala acá abajo -->
+            <!-- Globo de la primera materia usando tu clase .card -->
+            <div class="card" style="padding: 1.5rem;">
+                <h2 style="color: #34d399; font-size: 1.1rem; text-align: center; margin: 0;">Applied Mechatronics</h2>
+            </div>
+
+            <!-- Para agregar más materias, copiá el bloque <div class="card"> de arriba y pegalo acá abajo -->
+            
         </div>
     </div>
 

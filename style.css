@@ -342,74 +342,45 @@ body {
    para darles una pista sutil, cambiá 'cursor: default;' por 'cursor: pointer;' */
 
 /* =========================================================================
-   MENÚ DESPLEGABLE DE ELECTIVAS (TAMAÑO GLOBO)
+   MENÚ DESPLEGABLE CON GLOBOS (.card)
    ========================================================================= */
 
-/* Contenedor principal fijado arriba a la derecha */
+/* Fija el grupo entero arriba a la derecha */
 .electives-dropdown {
     position: fixed;
     top: 2rem;
     right: 2rem;
-    z-index: 1000; 
-    width: 280px; /* Le damos el mismo ancho que suelen tener las tarjetas */
+    z-index: 1000;
+    width: 280px; 
 }
 
-/* El botón visible (ahora convertido en un globo) */
+/* Ajustes mínimos para el globo que hace de botón */
 .electives-btn {
-    background: rgba(30, 32, 40, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    color: #ffffff;
-    padding: 2rem 1rem; /* Mucho más espacio interno, igual que las tarjetas */
-    font-size: 1.5rem; /* Texto más grande */
-    font-weight: bold;
-    text-align: center; /* Centramos el texto */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px; /* Bordes bien redondeados */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     cursor: default;
-    transition: background 0.3s ease, transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Efecto al pasar el mouse por el globo */
-.electives-dropdown:hover .electives-btn {
-    background: rgba(50, 52, 60, 0.9);
-    transform: translateY(-5px); /* Le agregamos el mismo salto que tienen tus otras tarjetas */
-}
-
-/* La caja desplegable que contiene las materias */
+/* El contenedor del menú ahora es completamente transparente */
 .electives-content {
     display: none; 
     position: absolute;
     top: 100%; 
     right: 0;
-    width: 100%; /* Toma exactamente el mismo ancho que el globo de arriba */
-    margin-top: 1rem; /* Un poco más de aire en la separación */
-    background: rgba(30, 32, 40, 0.9);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px; /* Mismos bordes redondeados */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    overflow: hidden; 
+    width: 100%;
+    
+    /* Espacio invisible arriba para que el mouse no pierda el foco al bajar */
+    padding-top: 1rem; 
+    
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
-/* Hace que la caja aparezca al pasar el mouse sobre el contenedor */
+/* Al pasar el mouse, muestra las materias y las separa */
 .electives-dropdown:hover .electives-content {
     display: flex;
-    flex-direction: column; 
-}
-
-/* Estilo de cada materia individual */
-.elective-item {
-    color: #34d399; /* Verde */
-    padding: 16px 20px; /* Un poco más de espacio para que sea fácil hacer clic/leer */
-    font-weight: 600;
-    font-size: 1.05rem;
-    text-align: center; /* Centramos las materias para que sigan el diseño */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
-}
-
-.elective-item:last-child {
-    border-bottom: none;
+    flex-direction: column;
+    gap: 1rem; /* El espacio entre cada globo de materia */
 }
