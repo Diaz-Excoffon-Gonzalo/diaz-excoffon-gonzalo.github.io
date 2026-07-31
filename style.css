@@ -342,7 +342,7 @@ body {
    para darles una pista sutil, cambiá 'cursor: default;' por 'cursor: pointer;' */
 
 /* =========================================================================
-   MENÚ DESPLEGABLE CON GLOBOS (.card)
+   MENÚ DESPLEGABLE CON CLASE DE MATERIAS (.subject-card)
    ========================================================================= */
 
 /* Fija el grupo entero arriba a la derecha */
@@ -351,36 +351,31 @@ body {
     top: 2rem;
     right: 2rem;
     z-index: 1000;
-    width: 280px; 
 }
 
-/* Ajustes mínimos para el globo que hace de botón */
+/* El botón principal */
 .electives-btn {
     cursor: default;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1.5rem 2rem; /* Le damos buen tamaño al botón */
 }
 
-/* El contenedor del menú ahora es completamente transparente */
+/* El contenedor del menú (invisible por defecto) */
 .electives-content {
     display: none; 
     position: absolute;
     top: 100%; 
     right: 0;
-    width: 100%;
-    
-    /* Espacio invisible arriba para que el mouse no pierda el foco al bajar */
-    padding-top: 1rem; 
-    
+    padding-top: 1rem; /* Espacio invisible para no perder el hover */
     background: transparent;
-    border: none;
-    box-shadow: none;
 }
 
-/* Al pasar el mouse, muestra las materias y las separa */
+/* Al pasar el mouse, muestra tus subject-cards apiladas */
 .electives-dropdown:hover .electives-content {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* El espacio entre cada globo de materia */
+    gap: 1rem; /* Espacio entre cada materia */
+    align-items: flex-end; /* Las pega hacia la derecha para que no se salgan de la pantalla */
 }
