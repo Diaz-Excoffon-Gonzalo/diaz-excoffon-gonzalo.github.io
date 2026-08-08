@@ -7,49 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <!-- Bloque de Progreso en la carrera -->
-    <div class="card" style="margin: 2rem auto; text-align: center; max-width: 600px;">
-        <!-- Nuevo Título -->
-        <h2 class="elegant-text" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Progreso en la carrera</h2>
         
-        <!-- El porcentaje gigante -->
-        <h1 id="texto-porcentaje" style="color: #34d399; font-size: 3.5rem; margin: 1rem 0;">0%</h1>
-        
-        <!-- Barra de progreso visual -->
-        <div style="width: 100%; background: rgba(255, 255, 255, 0.1); border-radius: 8px; height: 12px; overflow: hidden;">
-            <div id="barra-porcentaje" style="width: 0%; height: 100%; background: #34d399; transition: width 1.5s ease-in-out;"></div>
-        </div>
-    </div>
-
-    <!-- Script simplificado -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            
-            // Contamos TODAS las materias (.subject-card)
-            const todasLasMaterias = document.querySelectorAll('.subject-card');
-            const total = todasLasMaterias.length;
-
-            // Contamos SOLO las materias aprobadas en verde (.status-1)
-            const materiasAprobadas = document.querySelectorAll('.subject-card.status-1');
-            const aprobadas = materiasAprobadas.length;
-
-            // Calculamos el porcentaje
-            let porcentaje = 0;
-            if (total > 0) {
-                porcentaje = Math.round((aprobadas / total) * 100); 
-            }
-
-            // Inyectamos el porcentaje en el texto
-            document.getElementById('texto-porcentaje').innerText = porcentaje + '%';
-            
-            // Animamos la barra para que se llene hasta el porcentaje calculado
-            setTimeout(() => {
-                document.getElementById('barra-porcentaje').style.width = porcentaje + '%';
-            }, 100);
-        });
-    </script>
-
     <!-- Botón para volver al Inicio -->
     <a href="index.html" class="back-button">← Volver al Tablero Principal</a>
 
@@ -77,6 +35,17 @@
 
     <div class="curriculum-container">
         
+        <!-- Cartel de Progreso en la carrera -->
+        <div class="card" style="display: block; margin: 0 auto 2rem auto; text-align: center; max-width: 600px; width: 90%;">
+            <h2 class="elegant-text" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Progreso en la carrera</h2>
+            
+            <h1 id="texto-porcentaje" style="color: #34d399; font-size: 3.5rem; margin: 1rem 0;">0%</h1>
+            
+            <div style="width: 100%; background: rgba(255, 255, 255, 0.1); border-radius: 8px; height: 12px; overflow: hidden;">
+                <div id="barra-porcentaje" style="width: 0%; height: 100%; background: #34d399; transition: width 1.5s ease-in-out;"></div>
+            </div>
+        </div>
+
         <!-- Cartel de Leyenda Único -->
         <div class="legend-box">
             <span class="legend-yellow">En curso</span> - <span class="legend-green">Aprobado</span>
@@ -150,5 +119,31 @@
         </div>
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Contamos TODAS las materias (.subject-card)
+            const todasLasMaterias = document.querySelectorAll('.subject-card');
+            const total = todasLasMaterias.length;
+
+            // Contamos SOLO las materias aprobadas en verde (.status-1)
+            const materiasAprobadas = document.querySelectorAll('.subject-card.status-1');
+            const aprobadas = materiasAprobadas.length;
+
+            // Calculamos el porcentaje
+            let porcentaje = 0;
+            if (total > 0) {
+                porcentaje = Math.round((aprobadas / total) * 100); 
+            }
+
+            // Inyectamos el porcentaje en el texto
+            document.getElementById('texto-porcentaje').innerText = porcentaje + '%';
+            
+            // Animamos la barra para que se llene hasta el porcentaje calculado
+            setTimeout(() => {
+                document.getElementById('barra-porcentaje').style.width = porcentaje + '%';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
