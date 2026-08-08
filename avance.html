@@ -33,6 +33,60 @@
         </div>
     </div>
 
+<!-- Bloque de Porcentaje de progreso en la carrera -->
+<div class="card" style="margin: 2rem auto; text-align: center; max-width: 600px;">
+    <h2 class="elegant-text" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Progreso Total</h2>
+    
+    <!-- El número gigante con el porcentaje -->
+    <h1 id="texto-porcentaje" style="color: #34d399; font-size: 3.5rem; margin: 1rem 0;">0%</h1>
+    
+    <!-- Barra de progreso visual -->
+    <div style="width: 100%; background: rgba(255, 255, 255, 0.1); border-radius: 8px; height: 12px; overflow: hidden; margin-top: 1rem;">
+        <div id="barra-porcentaje" style="width: 0%; height: 100%; background: #34d399; transition: width 1.5s ease-in-out;"></div>
+    </div>
+    
+    <!-- Texto de detalle -->
+    <p style="color: rgba(255, 255, 255, 0.6); margin-top: 1.5rem; font-size: 0.95rem;">
+        Tenés <strong id="contador-materias" style="color: white;">0</strong> materias aprobadas de un total de <strong id="total-materias" style="color: white;">0</strong>.
+    </p>
+</div>
+
+<!-- Script que hace la matemática -->
+<script>
+    // Este evento asegura que el código espere a que todas las tarjetas se dibujen en la pantalla antes de contar
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // 1. Contamos TODAS las materias de la página (Cualquier elemento con la clase .subject-card)
+        const todasLasMaterias = document.querySelectorAll('.subject-card');
+        const total = todasLasMaterias.length;
+
+        // 2. Contamos SOLO las materias en verde (Elementos que tengan AMBAS clases al mismo tiempo)
+        const materiasAprobadas = document.querySelectorAll('.subject-card.status-1');
+        const aprobadas = materiasAprobadas.length;
+
+        // 3. Calculamos el porcentaje
+        let porcentaje = 0;
+        if (total > 0) {
+            // Usamos Math.round para redondear y no tener decimales largos
+            porcentaje = Math.round((aprobadas / total) * 100); 
+        }
+
+        // 4. Inyectamos los resultados en el HTML
+        document.getElementById('texto-porcentaje').innerText = porcentaje + '%';
+        
+        // Esto hace que la barra verde se "llene" hasta el porcentaje correspondiente
+        // Se le agrega un pequeñisimo retraso (setTimeout) para que la animación de la barra se vea al entrar
+        setTimeout(() => {
+            document.getElementById('barra-porcentaje').style.width = porcentaje + '%';
+        }, 100);
+
+        document.getElementById('contador-materias').innerText = aprobadas;
+        document.getElementById('total-materias').innerText = total;
+    });
+</script>   
+
+
+
     <div class="curriculum-container">
         
         <!-- Cartel de Leyenda Único -->
